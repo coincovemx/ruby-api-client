@@ -1,6 +1,10 @@
 # Volabit
 
-TODO: Write a gem description
+Library for the Volabit API. Integrate the Volabit services in your app with ease.
+
+## Note
+
+This library is in a very early development stage so, at the moment, it is not recomended to be used and is not available trought the rubygems chanel.
 
 ## Installation
 
