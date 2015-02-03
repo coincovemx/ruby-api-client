@@ -2,7 +2,6 @@
 module Volabit
   module Common
     module Helpers
-      private
       # Gets the base URL for the API service that will be used.
       #
       # @param  env [String] The environment to be used.
