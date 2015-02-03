@@ -6,6 +6,7 @@ module Volabit
   include Common::Constants
   extend  Common::Helpers
 
+  # Methods to manage the OAuth2 authentication process.
   module Auth
     # Generates the URL to be opened in the browser so the user can authorize
     # the app to use his/her Volabit account.

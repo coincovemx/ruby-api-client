@@ -6,6 +6,8 @@ module Volabit
     include Info
 
     private
+
+    # Request a resource using the GET method.
     def get_resource(resource, params = nil)
       @token.refresh if @token.expired?
       @token.get(resource, params: params)
