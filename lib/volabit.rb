@@ -6,6 +6,7 @@ require 'volabit/version'
 module Volabit
   class Client
     include Auth
+    include API
 
     def initialize(app_id:, app_secret:, app_url:, environment: 'production')
       @url = app_url
