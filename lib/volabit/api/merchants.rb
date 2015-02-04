@@ -1,6 +1,6 @@
 
 # Methods to perform merchant related operations.
-module Merchant
+module Merchants
   # Generates a special address to receive a bitcoin payment that will be
   # instantly converted to the designated currency.
   # @note This action requires special permissions to be performed.
@@ -9,5 +9,11 @@ module Merchant
       currency: currency,
       amount: amount
     }
+  end
+end
+
+module Volabit
+  module API
+    include Merchants
   end
 end

@@ -1,6 +1,6 @@
 
 # Methods to manage slips in the user wallet.
-module Slip
+module Slips
   # Creates a slip you can use to load your wallet.
   def new_slip(currency:, amount:, type:)
     post_to_resource 'api/v1/users/me/slips', {
@@ -32,5 +32,11 @@ module Slip
   # Lists the available methods to load a slip.
   def get_load_methods
     get_resource 'api/v1/users/me/slips/methods'
+  end
+end
+
+module Volabit
+  module API
+    include Slips
   end
 end
