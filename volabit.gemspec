@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["hola@volabit.com"]
   spec.summary       = %q{Library for the Volabit API.}
   spec.description   = %q{Integrate the Volabit services in your app with ease.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/coincovemx/api-client"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

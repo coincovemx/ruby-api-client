@@ -22,6 +22,7 @@ Or install it yourself as:
 
     $ git clone https://github.com/coincovemx/api-client.git
     $ cd api-client
+    $ bundle
     $ gem build volabit.gemspec
     $ gem install volabit-[version].gem
 
