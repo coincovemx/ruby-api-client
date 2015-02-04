@@ -1,16 +1,12 @@
 
 require_relative 'api/rates'
-require_relative 'api/account'
-require_relative 'api/slip'
-require_relative 'api/merchant'
+require_relative 'api/accounts'
+require_relative 'api/slips'
+require_relative 'api/transactions'
+require_relative 'api/merchants'
 
 module Volabit
   module API
-    include Rates
-    include Account
-    include Slip
-    include Merchant
-
     private
 
     # Request a resource using the GET method.

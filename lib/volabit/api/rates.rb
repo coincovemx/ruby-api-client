@@ -16,3 +16,9 @@ module Rates
     get_resource 'api/v1/tickers'
   end
 end
+
+module Volabit
+  module API
+    include Rates
+  end
+end
