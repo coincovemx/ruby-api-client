@@ -1,16 +1,16 @@
 
-require 'volabit/auth'
-require 'volabit/api'
-require 'volabit/version'
+require_relative 'volabit/auth'
+require_relative 'volabit/api'
+require_relative 'volabit/version'
 
 module Volabit
   class Client
     include Auth
     include API
 
-    def initialize(app_id:, app_secret:, app_url:, environment: 'production')
+    def initialize(app_id, app_secret, app_url, env = 'production')
       @url = app_url
-      set_oauth_client(app_id, app_secret, environment)
+      set_oauth_client(app_id, app_secret, env)
     end
   end
 end

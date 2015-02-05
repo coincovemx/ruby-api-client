@@ -8,7 +8,7 @@ module Volabit
       # @return [String] URL of the Volabit site if the environment is
       #         production, otherwise it will return the URL for the sanbox.
       def site_for(env)
-        (env.eql? 'production') ? Volabit::VOLABIT_SITE : Volabit::SANDBOX_SITE
+        (env.eql? 'production') ? Volabit::PRODUCTION_SITE : Volabit::SANDBOX_SITE
       end
     end
   end

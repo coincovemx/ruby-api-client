@@ -1,6 +1,7 @@
 
 require 'oauth2'
-require 'volabit/common'
+
+require_relative 'common'
 
 module Volabit
   include Common::Constants
@@ -26,6 +27,16 @@ module Volabit
     #         access the API and the methods to renew itself.
     def get_token(auth_code)
       @token = @oauth_client.auth_code.get_token auth_code, redirect_uri: @url
+    end
+
+    # Toggles the sandbox environment using a boolean value.
+    def sandbox(flag)
+      @oauth_client.site = case flag
+      when true  then Volabit.site_for 'sandbox'
+      when false then Volabit.site_for 'production'
+      else
+        @oauth_client.site
+      end
     end
 
     private
