@@ -6,7 +6,7 @@ require 'volabit/version'
 Gem::Specification.new do |spec|
   spec.name          = "volabit"
   spec.version       = Volabit::VERSION
-  spec.authors       = ["Volabit Team"]
+  spec.authors       = ["The Volabit Team & Contributors"]
   spec.email         = ["hola@volabit.com"]
   spec.summary       = %q{Library for the Volabit API.}
   spec.description   = %q{Integrate the Volabit services in your app with ease.}

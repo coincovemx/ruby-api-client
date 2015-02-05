@@ -10,10 +10,10 @@
 ## [Unreleased](unreleased)
 ### Added
 - OAuth2 integration.
-- Exchange rates methods.
-- Accounts methods.
-- Transactions methods.
-- Slips methods.
-- Merchants methods.
+- Exchange rates wrappers.
+- Users wrappers.
+- Transactions wrappers.
+- Slips wrappers.
+- Merchants wrappers.
 
 [unreleased]: http://https://github.com/coincovemx/api-client/tree/development
