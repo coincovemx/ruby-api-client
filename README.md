@@ -4,7 +4,7 @@ Library for the Volabit API. Integrate the Volabit services in your app with eas
 
 ## Note
 
-This library is in a very early development stage so, at the moment, it is not recomended to be used and is not available trought the rubygems chanel.
+This library is a very early stage of development. Please avoid using it in a production environment.
 
 ## Installation
 
