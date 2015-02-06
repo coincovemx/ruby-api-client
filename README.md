@@ -2,6 +2,8 @@
 
 Volabit's API library. Integrate the Volabit services in your apps with ease.
 
+You can see the available methods on the [project wiki][wiki]. Details of the API use can be found on the [official page][api-docs].
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -67,7 +69,6 @@ response.body
 #    }
 ```
 
-You can see the available methods on the [corresponding modules][modules]. Details of the API use can be found on the [official page][api-docs].
 
 ## Contributing
 
@@ -78,5 +79,5 @@ You can see the available methods on the [corresponding modules][modules]. Detai
 5. Create a new Pull Request
 
 
-[modules]: https://github.com/coincovemx/api-client/tree/development/lib/volabit/api
+[wiki]: https://github.com/coincovemx/api-client/wiki
 [api-docs]: https://coincovemx.github.io/
