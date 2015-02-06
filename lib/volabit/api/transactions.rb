@@ -9,7 +9,7 @@ module Transactions
     }
   end
 
-  # Instantly sell bitcoins to fiat balance.
+  # Instantly sell bitcoins to get fiat balance.
   # @note The amount is expected in satoshis.
   def sell_bitcoins(amount:)
     post_to_resource 'api/v1/users/me/sells', {
@@ -25,6 +25,16 @@ module Transactions
       amount: amount,
       address: address,
       currency: currency
+    }
+  end
+
+  # Requests a special address to receive a bitcoin payment that will be
+  # instantly converted to the designated currency.
+  # @note This action requires special merchant permissions to be performed.
+  def new_payment(currency:, amount:)
+    post_to_resource 'api/v1/users/me/green-addresses', {
+      currency: currency,
+      amount: amount
     }
   end
 end
