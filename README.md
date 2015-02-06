@@ -7,7 +7,7 @@ Volabit's API library. Integrate the Volabit services in your apps with ease.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'volabit', :git => 'https://github.com/coincovemx/api-client.git'
+gem 'volabit'
 ```
 
 And then execute:
