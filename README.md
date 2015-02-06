@@ -2,10 +2,6 @@
 
 Volabit's API library. Integrate the Volabit services in your apps with ease.
 
-## Note
-
-This library is a very early stage of development. Please avoid using it in a production environment.
-
 ## Installation
 
 Add this line to your application's Gemfile:
