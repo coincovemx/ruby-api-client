@@ -3,7 +3,6 @@ require_relative 'api/rates'
 require_relative 'api/users'
 require_relative 'api/slips'
 require_relative 'api/transactions'
-require_relative 'api/merchants'
 
 module Volabit
   module API

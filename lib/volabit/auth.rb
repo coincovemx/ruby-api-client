@@ -29,7 +29,9 @@ module Volabit
       @token = @oauth_client.auth_code.get_token auth_code, redirect_uri: @url
     end
 
-    # Toggles the sandbox environment using a boolean value.
+    # Toggles the test environment with a boolean value.
+    # @note Set it before requiring the user authorization or your app will need
+    # to be reauthorized.)
     def sandbox(flag)
       @oauth_client.site = case flag
       when true  then Volabit.site_for 'sandbox'

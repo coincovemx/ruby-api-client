@@ -11,7 +11,7 @@ module Rates
     }
   end
 
-  # Gets the currencies exchange price list.
+  # Gets the exchange price list for the supported currencies.
   def tickers
     get_resource 'api/v1/tickers'
   end

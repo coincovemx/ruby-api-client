@@ -29,7 +29,7 @@ module Slips
     }
   end
 
-  # Lists the available methods to load a slip.
+  # Lists the available options to load a slip.
   def get_load_methods
     get_resource 'api/v1/users/me/slips/methods'
   end

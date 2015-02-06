@@ -1,8 +1,8 @@
 
 # API endpoints for user account management.
 module Users
-  # Creates a new user.
-  # @note Special permissions are required to perform this action.
+  # Creates a new user account.
+  # @note Special partner permissions are required to perform this action.
   def create_user(acceptance:, email:, pass: '')
     post_to_resource 'api/v1/users', {
       accepts_terms_of_service: acceptance,
