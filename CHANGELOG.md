@@ -9,6 +9,9 @@
 
 ## [Unreleased](unreleased)
 ### Added
+- No recent changes.
+
+## [v0.0.1](v0.0.1)
 - OAuth2 integration.
 - Exchange rates wrappers.
 - Users wrappers.
@@ -16,4 +19,5 @@
 - Slips wrappers.
 - Merchants wrappers.
 
+[v0.0.1]: https://github.com/coincovemx/api-client/tree/v0.0.1
 [unreleased]: http://https://github.com/coincovemx/api-client/tree/development
