@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/volabit.svg)](http://badge.fury.io/rb/volabit)
+
 # Volabit
 
 Volabit's API Ruby library. Integrate the Volabit services in your apps with ease.
