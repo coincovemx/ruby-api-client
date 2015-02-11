@@ -36,11 +36,13 @@ module Volabit
       }
     end
 
-    def set_token(token, refresh_token, expires_in=nil, expires_at=nil)
+    def use_token(token, refresh_token)
+      token = OAuth2::AccessToken.new @oauth_client, token, { :refresh_token  => refresh_token }
+      token_info = JSON.parse token.get('/oauth/token/info').body
+      expires_in = token_info['expires_in_seconds']
       @token = OAuth2::AccessToken.new @oauth_client, token, {
         :refresh_token  => refresh_token,
         :expires_in     => expires_in,
-        :expires_at     => expires_at,
         :mode           => :header,
         :header_format  => 'Bearer %s',
         :param_name     => 'access_token'
