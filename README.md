@@ -54,10 +54,16 @@ auth_url = volabit_client.authorize
 volabit_client.get_token 'The given authorization code.'
 ```
 
-4) With these tokens, you'll be ready to call the services. The methods will return a json object.
+4) If you already have a `token` and a `refresh_token` you can use:
 
 ```ruby
-response = volabit_client.tickers
+volabit_client.use_token 'token', 'refresh_token'
+```
+
+5) You're ready to use our API. Just call any method listed [here][wiki].
+
+```ruby
+tickers = volabit_client.tickers
 # => {
 #       "btc_usd_buy":"226.06",
 #       "btc_usd_sell":"226.56",
