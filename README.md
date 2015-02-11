@@ -1,6 +1,6 @@
 # Volabit
 
-Volabit's API library. Integrate the Volabit services in your apps with ease.
+Volabit's API Ruby library. Integrate the Volabit services in your apps with ease.
 
 You can see the available methods on the [project wiki][wiki]. Details of the API use can be found on the [official page][api-docs].
 
@@ -36,7 +36,7 @@ callback    = 'The registered callback URL for your APP'
 volabit_client = Volabit::Client.new(app_id, secret, callback)
 ```
 
-Note that the by default the Volabit client uses the **production** environment. If you want to use the **test** environment, set the sandbox flag to `true` before requesting the authorization code.
+Note that by default the Volabit client uses the **production** environment. If you want to use the **test** environment, set the sandbox flag to `true` before requesting the authorization code.
 
 ```ruby
 volabit_client.sandbox true
@@ -54,11 +54,10 @@ auth_url = volabit_client.authorize
 volabit_client.get_token 'The given authorization code.'
 ```
 
-4) With these tokens, you'll be ready to call the services. The methods will return a response object. The contend can be retrieved with the `body` property and will be in the JSON format.
+4) With these tokens, you'll be ready to call the services. The methods will return a json object.
 
 ```ruby
 response = volabit_client.tickers
-response.body
 # => {
 #       "btc_usd_buy":"226.06",
 #       "btc_usd_sell":"226.56",
