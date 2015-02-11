@@ -27,6 +27,13 @@ module Volabit
     #         access the API and the methods to renew itself.
     def get_token(auth_code)
       @token = @oauth_client.auth_code.get_token auth_code, redirect_uri: @url
+      {
+        token: @token.token,
+        refresh_token: @token.refresh_token,
+        expires_in: @token.expires_in,
+        expires_at: @token.expires_at,
+        options: @token.options
+      }
     end
 
     # Toggles the test environment with a boolean value.
