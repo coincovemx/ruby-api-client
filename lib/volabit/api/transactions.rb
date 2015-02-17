@@ -18,7 +18,7 @@ module Transactions
   end
 
   # Instantly send fiat or bitcoins to an address.
-  # @note The amount is expected in satoshis for bitcoins and cents for fiat
+  # @note The amount is expected in satoshis for bitcoins and cents for
   #       fiat currencies.
   def send(currency:, amount:, address:)
     post_to_resource 'api/v1/users/me/send', {
@@ -30,7 +30,7 @@ module Transactions
 
   # Requests a special address to receive a bitcoin payment that will be
   # instantly converted to the designated currency.
-  # @note This action requires special merchant permissions to be performed.
+  # @note This action requires merchant privileges.
   def new_payment(currency:, amount:)
     post_to_resource 'api/v1/users/me/green-addresses', {
       currency: currency,

@@ -1,8 +1,9 @@
+
 [![Gem Version](https://badge.fury.io/rb/volabit.svg)](http://badge.fury.io/rb/volabit)
 
 # Volabit
 
-Volabit's API Ruby library. Integrate the Volabit services in your apps with ease.
+Volabit's API library for Ruby. Integrate the Volabit services in your apps with ease.
 
 You can see the available methods on the [project wiki][wiki]. Details of the API use can be found on the [official page][api-docs].
 
@@ -20,7 +21,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ git clone https://github.com/coincovemx/api-client.git
+    $ git clone https://github.com/coincovemx/ruby-api-client.git
     $ cd api-client
     $ bundle
     $ gem build volabit.gemspec
@@ -56,13 +57,13 @@ auth_url = volabit_client.authorize
 volabit_client.get_token 'The given authorization code.'
 ```
 
-4) If you already have a `token` and a `refresh_token` you can use:
+Or, if you already have a `token` and a `refresh_token` you can use:
 
 ```ruby
 volabit_client.use_token 'token', 'refresh_token'
 ```
 
-5) You're ready to use our API. Just call any method listed [here][wiki].
+4) You're ready to use our API. Just call any method listed [here][wiki].
 
 ```ruby
 tickers = volabit_client.tickers
@@ -76,15 +77,14 @@ tickers = volabit_client.tickers
 #    }
 ```
 
-
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/volabit/fork )
+1. Fork it ( https://github.com/[my-github-username]/ruby-api-client/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
 
 
-[wiki]: https://github.com/coincovemx/api-client/wiki
+[wiki]: https://github.com/coincovemx/ruby-api-client/wiki
 [api-docs]: https://coincovemx.github.io/

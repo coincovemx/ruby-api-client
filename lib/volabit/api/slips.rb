@@ -1,7 +1,7 @@
 
 # Methods to manage slips in the user wallet.
 module Slips
-  # Creates a slip you can use to load your wallet.
+  # Creates a slip that can be used to load the user wallet.
   def new_slip(currency:, amount:, type:)
     post_to_resource 'api/v1/users/me/slips', {
       currency: currency,

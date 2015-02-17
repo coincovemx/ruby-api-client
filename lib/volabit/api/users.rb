@@ -1,8 +1,8 @@
 
 # API endpoints for user account management.
 module Users
-  # Creates a new user account.
-  # @note Special partner permissions are required to perform this action.
+  # Request the creation of a new user with the given params.
+  # @note This action requires partner privileges.
   def create_user(acceptance:, email:, pass: '')
     post_to_resource 'api/v1/users', {
       accepts_terms_of_service: acceptance,
@@ -14,7 +14,7 @@ module Users
 
   alias_method :new_user, :create_user
 
-  # Get the account information from the user that authorized the app.
+  # Gets the information details of the app user.
   def me
     get_resource 'api/v1/users/me'
   end
