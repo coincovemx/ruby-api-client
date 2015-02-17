@@ -10,18 +10,28 @@ module Volabit
 
     # Request a resource using the GET method.
     def get_resource(resource, params = nil)
+      raise no_token_error unless @token
       @token.refresh if @token.expired?
-      @token.get(resource, params: params)
+      response = @token.get(resource, params: params)
+      JSON.parse response.body, :symbolize_names => true
     end
 
     def post_to_resource(resource, params)
+      raise no_token_error unless @token
       @token.refresh if @token.expired?
-      @token.post(resource, params: params)
+      response = @token.post(resource, params: params)
+      JSON.parse response.body, :symbolize_names => true
     end
 
     def delete_resource(resource)
+      raise no_token_error unless @token
       @token.refresh if @token.expired?
-      @token.delete(resource)
+      response = @token.delete(resource)
+      JSON.parse response.body, :symbolize_names => true
+    end
+
+    def no_token_error
+      'Error: you have to run get_token or set_token before use this method.'
     end
   end
 end
