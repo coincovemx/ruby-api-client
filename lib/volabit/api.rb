@@ -8,25 +8,12 @@ module Volabit
   module API
     private
 
-    # Request a resource using the GET method.
-    def get_resource(resource, params = nil)
+    # Request given resource using the provided method and params.
+    def resource(verb, resource, params = nil)
       raise no_token_error unless @token
-      @token.refresh if @token.expired?
-      response = @token.get(resource, params: params)
-      JSON.parse response.body, :symbolize_names => true
-    end
+      @token.refresh! if @token.expired?
 
-    def post_to_resource(resource, params)
-      raise no_token_error unless @token
-      @token.refresh if @token.expired?
-      response = @token.post(resource, params: params)
-      JSON.parse response.body, :symbolize_names => true
-    end
-
-    def delete_resource(resource)
-      raise no_token_error unless @token
-      @token.refresh if @token.expired?
-      response = @token.delete(resource)
+      response = @token.send(verb, resource, params: params)
       JSON.parse response.body, :symbolize_names => true
     end
 
