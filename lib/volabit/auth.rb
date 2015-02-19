@@ -43,6 +43,8 @@ module Volabit
       (@token.params['error']) ? @token.params : tokens
     end
 
+    alias_method :get_token, :request_tokens
+
     # Loads the client with the provided token information.
     #
     # @param  tokens_hash [Hash] that must contain at least the access and
@@ -53,6 +55,8 @@ module Volabit
       retrieve_missing_token_info if @token[:expires_at].nil?
       tokens
     end
+
+    alias_method :use_token, :use_tokens
 
     # Triggers a refresh of the current tokens.
     #

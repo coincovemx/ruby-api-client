@@ -22,7 +22,7 @@ And then execute:
 Or install it yourself as:
 
     $ git clone https://github.com/coincovemx/ruby-api-client.git
-    $ cd api-client
+    $ cd ruby-api-client
     $ bundle
     $ gem build volabit.gemspec
     $ gem install volabit-[version].gem
@@ -54,13 +54,13 @@ auth_url = volabit_client.authorize
 3) After you get the authorization code (sent at the callback URL that you provided), you'll use it to get the refresh and access tokens. This code can be used only once, so be sure to store the token object for later use or your app will have to be reauthorized.
 
 ```ruby
-volabit_client.get_token 'The given authorization code.'
+volabit_client.request_tokens 'The given authorization code.'
 ```
 
 Or, if you already have a `token` and a `refresh_token` you can use:
 
 ```ruby
-volabit_client.use_token 'token', 'refresh_token'
+volabit_client.use_tokens 'token', 'refresh_token'
 ```
 
 4) You're ready to use our API. Just call any method listed [here][wiki].

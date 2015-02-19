@@ -28,6 +28,8 @@ module Transactions
     }
   end
 
+  alias_method :send_funds, :send_money
+
   # Requests a special address to receive a bitcoin payment that will be
   # instantly converted to the designated currency.
   # @note This action requires merchant privileges.
