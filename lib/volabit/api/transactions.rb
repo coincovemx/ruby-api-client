@@ -31,8 +31,7 @@ module Transactions
   alias_method :send_funds, :send_money
 
   # Requests a special address to receive a bitcoin payment that will be
-  # instantly converted to the designated currency.
-  # @note This action requires merchant privileges.
+  # converted to the designated currency.
   def new_payment(currency:, amount:)
     resource :post, 'api/v1/users/me/green-addresses', {
       currency: currency,

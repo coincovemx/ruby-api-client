@@ -18,6 +18,10 @@ You can see the supported releases on the [project GitHub repository](http://htt
 - `send_money` (`send_funds`) method replaces the `send` method to avoid the clash with the `Òbject#send` method.
 - ArgumentError exceptions for params on methods that use them to build the resource URL.
 
+###Fixed
+- Refreshing the tokens now correctly sets the newly obtained tokens.
+- `Client#new_payment` docs tell that the method is available to all the users.
+
 ### Removed
 - `send` method. Use `send_money` method from now on.
 
