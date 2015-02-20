@@ -32,9 +32,9 @@ Or install it yourself as:
 1) Instance a new Volabit client object.
 
 ```ruby
-app_id      = 'The registered API for your APP.'
-secret      = 'The registered secret for your APP.'
-callback    = 'The registered callback URL for your APP'
+app_id   = 'The registered API for your APP.'
+secret   = 'The registered secret for your APP.'
+callback = 'The registered callback URL for your APP'
 
 volabit_client = Volabit::Client.new(app_id, secret, callback)
 ```
@@ -43,6 +43,13 @@ Note that by default the Volabit client uses the **production** environment. If 
 
 ```ruby
 volabit_client.sandbox true
+```
+
+You can also provide this parameter upon client instantiation.
+
+```ruby
+environment    = 'sandbox'
+volabit_client = Volabit::Client.new(app_id, secret, callback, environment)
 ```
 
 2) Get the URL that will allow the user to authorize your app to use his/her account. (It should be opened in a browser.)
@@ -76,6 +83,8 @@ tickers = volabit_client.tickers
 #       "btc_mxn_sell":"3427.3"
 #    }
 ```
+
+**Note**: You can obtain the current tokens used by the client with the method `Client#tokens`. Be sure to keep them **safe** withing your application for later use.
 
 ## Contributing
 
