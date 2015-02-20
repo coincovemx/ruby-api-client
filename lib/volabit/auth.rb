@@ -5,7 +5,8 @@ require_relative 'common'
 
 module Volabit
   include Common::Constants
-  extend  Common::Helpers
+  include Common::Errors
+  extend Common::Helpers
 
   # Methods to manage the OAuth2 authentication process.
   module Auth
@@ -21,16 +22,11 @@ module Volabit
 
     # Gets the information of the tokens currently set on the client.
     #
-    # @return [Hash] including the access and refresh tokens, the
-    #         expiration POSIX time, and other configuration options.
+    # @return [Hash] including the access and refresh tokens and the
+    #         expiration POSIX time, or an error message it one occurs
+    #         while requesting the tokens.
     def tokens
-      {
-        access_token:  @token.token,
-        refresh_token: @token.refresh_token,
-        expires_in:    @token.expires_in,
-        expires_at:    @token.expires_at,
-        options:       @token.options
-      }
+      @token.to_hash
     end
 
     # Requests and sets the access and refresh tokens to use the Volabit API
@@ -39,8 +35,9 @@ module Volabit
     # @param  auth_token [String]
     # @return [Hash] with the tokens information. (See #tokens).
     def request_tokens(auth_code)
-      @token = @oauth_client.auth_code.get_token(auth_code, redirect_uri: @url)
-      (@token.params['error']) ? @token.params : tokens
+      response = @oauth_client.auth_code.get_token auth_code, redirect_uri: @url
+      response['error'] ? token_error(response['error']) : @token = response
+      tokens
     end
 
     alias_method :get_token, :request_tokens
@@ -50,9 +47,9 @@ module Volabit
     # @param  tokens_hash [Hash] that must contain at least the access and
     #         refresh tokens.
     # @return [Hash] with the tokens information. (See #tokens).
-    def use_tokens(tokens_info)
-      @token = OAuth2::AccessToken.from_hash @oauth_client, tokens_info
-      retrieve_missing_token_info if @token[:expires_at].nil?
+    def use_tokens(tokens_hash)
+      @token = OAuth2::AccessToken.from_hash @oauth_client, tokens_hash
+      retrieve_missing_token_info if @token.expires_at.nil?
       tokens
     end
 
@@ -64,7 +61,7 @@ module Volabit
     # @note   This method is provided as convenience, as the client checks the
     #         expiration of the tokens before each call to the API.
     def refresh_tokens
-      @token.refresh
+      @token.refresh!
       tokens
     end
 
@@ -83,11 +80,14 @@ module Volabit
     # Gets and sets information about the expiration time for provided
     # tokens without it.
     def retrieve_missing_token_info
-      info = JSON.parse @token.get('/oauth/token/info').body
-      time_left = info['expires_in_seconds']
+      response = JSON.parse @token.get('/oauth/token/info').body
 
-      @token.instance_variable_set '@expires_in', time_left
-      @token.instance_variable_set '@expires_at', (Time.now.to_i + time_left)
+      if response['error']
+        response['hint'] = ' Reauthorization may be required.'
+        token_error response
+      else
+        @token.instance_variable_set '@expires_at', (Time.now.to_i + time_left)
+      end
     end
 
     # Instances a new OAuth client to manage authorizations.
@@ -96,6 +96,10 @@ module Volabit
         site: Volabit.site_for(env),
         raise_errors: false
       })
+    end
+
+    def token_error(error)
+      raise Volabit::TokenError, error
     end
   end
 end
