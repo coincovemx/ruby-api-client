@@ -5,7 +5,6 @@ require_relative 'common'
 
 module Volabit
   include Common::Constants
-  include Common::Errors
   extend Common::Helpers
 
   # Methods to manage the OAuth2 authentication process.
@@ -26,7 +25,7 @@ module Volabit
     #         expiration POSIX time, or an error message it one occurs
     #         while requesting the tokens.
     def tokens
-      @token.to_hash
+      (@token.kind_of? OAuth2::AccessToken) ? @token.to_hash : @token
     end
 
     # Requests and sets the access and refresh tokens to use the Volabit API
@@ -35,8 +34,7 @@ module Volabit
     # @param  auth_token [String]
     # @return [Hash] with the tokens information. (See #tokens).
     def request_tokens(auth_code)
-      response = @oauth_client.auth_code.get_token auth_code, redirect_uri: @url
-      response['error'] ? token_error(response['error']) : @token = response
+      @token = @oauth_client.auth_code.get_token auth_code, redirect_uri: @url
       tokens
     end
 
@@ -61,7 +59,7 @@ module Volabit
     # @note   This method is provided as convenience, as the client checks the
     #         expiration of the tokens before each call to the API.
     def refresh_tokens
-      @token.refresh!
+      @token = @token.refresh!
       tokens
     end
 
@@ -83,9 +81,10 @@ module Volabit
       response = JSON.parse @token.get('/oauth/token/info').body
 
       if response['error']
-        response['hint'] = ' Reauthorization may be required.'
-        token_error response
+        response['hint'] = 'Reauthorization may be required.'
+        @token = response
       else
+        time_left = response['expires_in_seconds']
         @token.instance_variable_set '@expires_at', (Time.now.to_i + time_left)
       end
     end
@@ -96,10 +95,6 @@ module Volabit
         site: Volabit.site_for(env),
         raise_errors: false
       })
-    end
-
-    def token_error(error)
-      raise Volabit::TokenError, error
     end
   end
 end
