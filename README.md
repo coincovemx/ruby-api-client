@@ -97,3 +97,7 @@ tickers = volabit_client.tickers
 
 [wiki]: https://github.com/coincovemx/ruby-api-client/wiki
 [api-docs]: https://coincovemx.github.io/
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/coincovemx/ruby-api-client/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
