@@ -37,11 +37,11 @@ module Slips
   end
 
   # Lists the available options to load a slip.
-  def get_load_methods
+  def load_methods
     resource :get, 'api/v1/users/me/slips/methods'
   end
 
-  alias load_methods get_load_methods
+  alias get_load_methods load_methods
 
 private
 
