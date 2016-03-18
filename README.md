@@ -1,5 +1,6 @@
 
 [![Gem Version](https://badge.fury.io/rb/volabit.svg)](http://badge.fury.io/rb/volabit)
+[![Build Status](https://travis-ci.org/coincovemx/ruby-api-client.svg?branch=master)](https://travis-ci.org/coincovemx/ruby-api-client)
 
 # Volabit
 
