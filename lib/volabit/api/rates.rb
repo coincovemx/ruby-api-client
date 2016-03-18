@@ -7,11 +7,10 @@ module Rates
   def spot_prices(amount, from: 'BTC', to: 'MXN')
     same_currencies_error if from.eql? to
 
-    resource :get, 'api/v1/spot-prices', {
-      currency_from: from,
-      currency_to: to,
-      amount: amount
-    }
+    resource :get, 'api/v1/spot-prices',
+             currency_from: from,
+             currency_to: to,
+             amount: amount
   end
 
   # Gets the exchange price list for the supported currencies.

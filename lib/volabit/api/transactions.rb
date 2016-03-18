@@ -17,11 +17,10 @@ module Transactions
   # @note The amount is expected in satoshis for bitcoins and cents for
   #       fiat currencies.
   def send_money(currency:, amount:, address:)
-    resource :post, 'api/v1/users/me/send', {
-      amount: amount,
-      address: address,
-      currency: currency
-    }
+    resource :post, 'api/v1/users/me/send',
+             amount: amount,
+             address: address,
+             currency: currency
   end
 
   alias send_funds send_money
@@ -29,10 +28,9 @@ module Transactions
   # Requests a special address to receive a bitcoin payment that will be
   # converted to the designated currency.
   def new_payment(currency:, amount:)
-    resource :post, 'api/v1/users/me/green-addresses', {
-      currency: currency,
-      amount: amount
-    }
+    resource :post, 'api/v1/users/me/green-addresses',
+             currency: currency,
+             amount: amount
   end
 end
 

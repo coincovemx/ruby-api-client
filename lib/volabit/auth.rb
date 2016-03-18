@@ -91,10 +91,12 @@ module Volabit
 
     # Instances a new OAuth client to manage authorizations.
     def set_oauth_client(id, secret, env)
-      @oauth_client = OAuth2::Client.new(id, secret, {
+      @oauth_client = OAuth2::Client.new(
+        id,
+        secret,
         site: Volabit.site_for(env),
         raise_errors: false
-      })
+      )
     end
   end
 end

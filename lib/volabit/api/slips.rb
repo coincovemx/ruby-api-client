@@ -3,11 +3,10 @@
 module Slips
   # Creates a slip that can be used to load the user wallet.
   def new_slip(currency:, amount:, type:)
-    resource :post, 'api/v1/users/me/slips', {
-      currency: currency,
-      amount: amount,
-      type: type
-    }
+    resource :post, 'api/v1/users/me/slips',
+             currency: currency,
+             amount: amount,
+             type: type
   end
 
   alias create_slip new_slip
@@ -29,11 +28,10 @@ module Slips
   # Informs of a receipt used to load a wallet's slip.
   def report_receipt(id:, amount:, affiliation:, authorization:)
     empty_param_error('id') if id.to_s.eql? ''
-    resource :post, "api/v1/users/me/slips/#{id}/report", {
-      amount: amount,
-      affiliation_number: affiliation,
-      authorization_number: authorization
-    }
+    resource :post, "api/v1/users/me/slips/#{id}/report",
+             amount: amount,
+             affiliation_number: affiliation,
+             authorization_number: authorization
   end
 
   # Lists the available options to load a slip.
