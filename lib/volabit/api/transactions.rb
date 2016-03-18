@@ -4,17 +4,13 @@ module Transactions
   # Instantly buy bitcoins using fiat balance.
   # @note The amount is expected in satoshis.
   def buy_bitcoins(amount:)
-    resource :post, 'api/v1/users/me/buys', {
-      amount: amount
-    }
+    resource :post, 'api/v1/users/me/buys', amount: amount
   end
 
   # Instantly sell bitcoins to get fiat balance.
   # @note The amount is expected in satoshis.
   def sell_bitcoins(amount:)
-    resource :post, 'api/v1/users/me/sells', {
-      amount: amount
-    }
+    resource :post, 'api/v1/users/me/sells', amount: amount
   end
 
   # Instantly send fiat or bitcoins to an address.
@@ -28,7 +24,7 @@ module Transactions
     }
   end
 
-  alias_method :send_funds, :send_money
+  alias send_funds send_money
 
   # Requests a special address to receive a bitcoin payment that will be
   # converted to the designated currency.

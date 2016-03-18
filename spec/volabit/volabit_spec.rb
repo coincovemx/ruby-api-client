@@ -2,8 +2,8 @@
 require File.expand_path('spec/spec_helper')
 require File.expand_path('lib/volabit')
 
-PRODUCTION_URL = 'https://www.volabit.com'
-SANDBOX_URL    = 'https://sandbox.volabit.com'
+PRODUCTION_URL = 'https://www.volabit.com'.freeze
+SANDBOX_URL    = 'https://sandbox.volabit.com'.freeze
 
 RSpec.describe Volabit do
   subject { described_class }

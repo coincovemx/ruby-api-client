@@ -19,7 +19,7 @@ module Rates
     resource :get, 'api/v1/tickers'
   end
 
-  private
+private
 
   def same_currencies_error
     raise ArgumentError, 'Currencies must be different.'

@@ -10,7 +10,7 @@ module Slips
     }
   end
 
-  alias_method :create_slip, :new_slip
+  alias create_slip new_slip
 
   # Gets the information of a specific slip.
   def get_slip_data(id:)
@@ -18,7 +18,7 @@ module Slips
     resource :get, "api/v1/users/me/slips/#{id}"
   end
 
-  alias_method :slip_data, :get_slip_data
+  alias slip_data get_slip_data
 
   # Deletes a specific slip.
   def delete_slip(id:)
@@ -41,9 +41,10 @@ module Slips
     resource :get, 'api/v1/users/me/slips/methods'
   end
 
-  alias_method :load_methods, :get_load_methods
+  alias load_methods get_load_methods
 
-  private
+private
+
   def empty_param_error(param)
     raise ArgumentError, ":#{param} must not be nil or empty."
   end
