@@ -64,10 +64,14 @@ auth_url = volabit_client.authorize
 volabit_client.request_tokens 'The given authorization code.'
 ```
 
-Or, if you already have a `token` and a `refresh_token` you can use:
+Or, if you already have an `access_token` and a `refresh_token` from the last call, you can use:
 
 ```ruby
-volabit_client.use_tokens 'token', 'refresh_token'
+tokens = {
+  access_token: 'access_token',
+  refresh_token: 'refresh_token'
+}
+volabit_client.use_tokens(tokens)
 ```
 
 4) You're ready to use our API. Just call any method listed [here][wiki].
