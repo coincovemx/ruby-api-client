@@ -1,4 +1,3 @@
-
 require 'bundler/gem_tasks'
 
 begin
@@ -9,6 +8,8 @@ begin
   RSpec::Core::RakeTask.new
   task default: :spec
   task test:    :spec
+end
 
-rescue LoadError
+task :console do
+  exec 'irb -r volabit -I ./lib'
 end

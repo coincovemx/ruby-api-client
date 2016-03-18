@@ -5,20 +5,24 @@ You can see the supported releases on the [project GitHub repository](http://htt
 ## To Do
 - Add specs.
 - Add proper docs.
-- Automatics test suite run. (Codeship)
 
 ## Unreleased
 ### Added
 - No recent changes.
 
+## v1.1.1
+- Add travis builds
+- Add bumper using `./bump [-m, -n, -p, -h]`
+- Add rubocop and fix code style
+
 ## v1.1.0
 ### Added
-- Better token handling with `tokens`, `request_tokens`, `ùse_tokens` and `refresh_tokens` available from the client public methods.
+- Better token handling with `tokens`, `request_tokens`, `use_tokens` and `refresh_tokens` available from the client public methods.
 - Aliases for the methods with name changes.
-- `send_money` (`send_funds`) method replaces the `send` method to avoid the clash with the `Òbject#send` method.
+- `send_money` (`send_funds`) method replaces the `send` method to avoid the clash with the `Object#send` method.
 - ArgumentError exceptions for params on methods that use them to build the resource URL.
 
-###Fixed
+### Fixed
 - Refreshing the tokens now correctly sets the newly obtained tokens.
 - `Client#new_payment` docs tell that the method is available to all the users.
 

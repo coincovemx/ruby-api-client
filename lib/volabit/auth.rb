@@ -25,7 +25,7 @@ module Volabit
     #         expiration POSIX time, or an error message it one occurs
     #         while requesting the tokens.
     def tokens
-      (@token.kind_of? OAuth2::AccessToken) ? @token.to_hash : @token
+      (@token.is_a? OAuth2::AccessToken) ? @token.to_hash : @token
     end
 
     # Requests and sets the access and refresh tokens to use the Volabit API
@@ -38,7 +38,7 @@ module Volabit
       tokens
     end
 
-    alias_method :get_token, :request_tokens
+    alias get_token request_tokens
 
     # Loads the client with the provided token information.
     #
@@ -51,7 +51,7 @@ module Volabit
       tokens
     end
 
-    alias_method :use_token, :use_tokens
+    alias use_token use_tokens
 
     # Triggers a refresh of the current tokens.
     #
@@ -73,7 +73,7 @@ module Volabit
       end
     end
 
-    private
+  private
 
     # Gets and sets information about the expiration time for provided
     # tokens without it.
@@ -91,10 +91,12 @@ module Volabit
 
     # Instances a new OAuth client to manage authorizations.
     def set_oauth_client(id, secret, env)
-      @oauth_client = OAuth2::Client.new(id, secret, {
+      @oauth_client = OAuth2::Client.new(
+        id,
+        secret,
         site: Volabit.site_for(env),
         raise_errors: false
-      })
+      )
     end
   end
 end

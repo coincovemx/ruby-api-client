@@ -4,19 +4,19 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'volabit/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "volabit"
+  spec.name          = 'volabit'
   spec.version       = Volabit::VERSION
-  spec.authors       = ["The Volabit Team & Contributors"]
-  spec.email         = ["hola@volabit.com"]
-  spec.summary       = %q{Library for the Volabit API.}
-  spec.description   = %q{Integrate the Volabit services in your app with ease.}
-  spec.homepage      = "https://github.com/coincovemx/api-client"
-  spec.license       = "MIT"
+  spec.authors       = ['The Volabit Team & Contributors']
+  spec.email         = ['hola@volabit.com']
+  spec.summary       = 'Library for the Volabit API.'
+  spec.description   = 'Integrate the Volabit services in your app with ease.'
+  spec.homepage      = 'https://github.com/coincovemx/api-client'
+  spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
-  spec.require_paths = ["lib"]
+  spec.require_paths = ['lib']
 
   spec.add_runtime_dependency 'oauth2', '~> 1.0'
 
@@ -26,4 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry-byebug', '~> 3.0'
   spec.add_development_dependency 'awesome_print', '~> 1.6'
   spec.add_development_dependency 'pry-coolline', '~> 0.2'
+  spec.add_development_dependency 'rubocop', '~> 0.36'
+  spec.add_development_dependency 'simplecov',   '~> 0.11'
+  spec.add_development_dependency 'bump', '~> 0.5', '>= 0.5.3'
 end

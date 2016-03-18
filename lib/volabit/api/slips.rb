@@ -3,14 +3,13 @@
 module Slips
   # Creates a slip that can be used to load the user wallet.
   def new_slip(currency:, amount:, type:)
-    resource :post, 'api/v1/users/me/slips', {
-      currency: currency,
-      amount: amount,
-      type: type
-    }
+    resource :post, 'api/v1/users/me/slips',
+             currency: currency,
+             amount: amount,
+             type: type
   end
 
-  alias_method :create_slip, :new_slip
+  alias create_slip new_slip
 
   # Gets the information of a specific slip.
   def get_slip_data(id:)
@@ -18,7 +17,7 @@ module Slips
     resource :get, "api/v1/users/me/slips/#{id}"
   end
 
-  alias_method :slip_data, :get_slip_data
+  alias slip_data get_slip_data
 
   # Deletes a specific slip.
   def delete_slip(id:)
@@ -29,21 +28,21 @@ module Slips
   # Informs of a receipt used to load a wallet's slip.
   def report_receipt(id:, amount:, affiliation:, authorization:)
     empty_param_error('id') if id.to_s.eql? ''
-    resource :post, "api/v1/users/me/slips/#{id}/report", {
-      amount: amount,
-      affiliation_number: affiliation,
-      authorization_number: authorization
-    }
+    resource :post, "api/v1/users/me/slips/#{id}/report",
+             amount: amount,
+             affiliation_number: affiliation,
+             authorization_number: authorization
   end
 
   # Lists the available options to load a slip.
-  def get_load_methods
+  def load_methods
     resource :get, 'api/v1/users/me/slips/methods'
   end
 
-  alias_method :load_methods, :get_load_methods
+  alias get_load_methods load_methods
 
-  private
+private
+
   def empty_param_error(param)
     raise ArgumentError, ":#{param} must not be nil or empty."
   end

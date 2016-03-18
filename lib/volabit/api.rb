@@ -6,7 +6,7 @@ require_relative 'api/transactions'
 
 module Volabit
   module API
-    private
+  private
 
     # Request given resource using the provided method and params.
     def resource(verb, resource, params = nil)
@@ -14,7 +14,7 @@ module Volabit
       refresh_tokens if @token.expired?
 
       response = @token.send(verb, resource, params: params)
-      JSON.parse response.body, :symbolize_names => true
+      JSON.parse response.body, symbolize_names: true
     end
 
     # Raises an exception intended when there is no OAuth2::AccessToken
