@@ -4,7 +4,6 @@ require_relative 'volabit/api'
 require_relative 'volabit/version'
 
 module Volabit
-
   # Class that handles authorizations and API calls.
   class Client
     include Auth
