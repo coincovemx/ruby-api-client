@@ -5,11 +5,15 @@ You can see the supported releases on the [project GitHub repository](http://htt
 ## To Do
 - Add specs.
 - Add proper docs.
-- Automatics test suite run. (Codeship)
 
 ## Unreleased
 ### Added
 - No recent changes.
+
+## v1.1.1
+- Add travis builds
+- Add bumper using `./bump [-m, -n, -p, -h]`
+- Add rubocop and fix code style
 
 ## v1.1.0
 ### Added
