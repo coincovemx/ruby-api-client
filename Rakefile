@@ -1,4 +1,3 @@
-
 require 'bundler/gem_tasks'
 
 begin
@@ -9,8 +8,6 @@ begin
   RSpec::Core::RakeTask.new
   task default: :spec
   task test:    :spec
-
-rescue LoadError
 end
 
 task :console do
