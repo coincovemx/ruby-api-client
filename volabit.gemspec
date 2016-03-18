@@ -26,4 +26,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry-byebug', '~> 3.0'
   spec.add_development_dependency 'awesome_print', '~> 1.6'
   spec.add_development_dependency 'pry-coolline', '~> 0.2'
+  spec.add_development_dependency 'rubocop', '~> 0.36'
 end
