@@ -12,3 +12,7 @@ begin
 
 rescue LoadError
 end
+
+task :console do
+  exec 'irb -r volabit -I ./lib'
+end
